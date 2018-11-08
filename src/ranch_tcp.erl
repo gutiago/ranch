@@ -238,7 +238,7 @@ sockname(Socket) ->
 -spec shutdown(inet:socket(), read | write | read_write)
 	-> ok | {error, atom()}.
 shutdown(Socket, How) ->
-	io:format("Shutdown ~p How ~p at: ~p ~n", [{inet:sockname(Socket), inet:peername(Socket)}, How, erlang:system_time(milli_seconds)]),
+	io:format("Shutdown ~p How ~p at: ~p Trace: ~p ~n", [{inet:sockname(Socket), inet:peername(Socket)}, How, erlang:system_time(milli_seconds), erlang:get_stacktrace()]),
 	gen_tcp:shutdown(Socket, How).
 
 -spec close(inet:socket()) -> ok.
